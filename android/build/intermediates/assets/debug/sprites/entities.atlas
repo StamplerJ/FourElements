@@ -1,0 +1,41 @@
+
+entities.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+air
+  rotate: false
+  xy: 724, 2
+  size: 102, 102
+  orig: 102, 102
+  offset: 0, 0
+  index: -1
+city
+  rotate: false
+  xy: 2, 26
+  size: 720, 184
+  orig: 720, 184
+  offset: 0, 0
+  index: -1
+earth
+  rotate: false
+  xy: 724, 106
+  size: 104, 104
+  orig: 104, 104
+  offset: 0, 0
+  index: -1
+fire
+  rotate: false
+  xy: 830, 108
+  size: 102, 102
+  orig: 102, 102
+  offset: 0, 0
+  index: -1
+water
+  rotate: false
+  xy: 830, 10
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1

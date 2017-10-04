@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/jann/Android/projects/libGDX/Projects/BeeMelon Studio/FourElements/core/build/libs/core-1.0.jar"
+        jumboMode="false"
+        revision="26.0.1"
+        sha1="96b74231ec8359d74a6767e42502eb94a3e59a64">
+        <dex dex="/home/jann/Android/projects/libGDX/Projects/BeeMelon Studio/FourElements/android/build/intermediates/pre-dexed/release/core-1.0_979901e121be8d8dd2714367286692fe1f7b756a.jar" />
+    </item>
+
+</items>
