@@ -17,7 +17,8 @@ import com.beemelonstudio.fourelements.entities.EntityTypes;
 public class Element extends CircleEntity {
 
     private Circle backupCircle;
-    public static float maxVelocity;
+    public float speed;
+    public boolean moving;
     private int bounces;
     private int internalScore;
 
@@ -31,15 +32,18 @@ public class Element extends CircleEntity {
 
         boundingCircle = new Circle(x, y, CircleEntity.radius);
         backupCircle = new Circle(boundingCircle);
+
         velocity = new Vector2(0, 0);
-        maxVelocity = 320;
+        speed = 640;
+        moving = false;
         bounces = 0;
+
         internalScore = 1;
 
         textureAtlas = (TextureAtlas) Assets.get("entitiesTextureAtlas");
 
         switch (type) {
-            case HEALTHPACK:
+            case HEALTHPACK: // TODO: Remove
                 break;
             case WATER:
                 texture = textureAtlas.findRegion("water");
@@ -66,6 +70,9 @@ public class Element extends CircleEntity {
     }
 
     public void act(float delta) {
+
+        if(velocity.x != 0 || velocity.y != 0)
+            moving = true;
 
         // Moving
         if(boundingCircle.x + CircleEntity.radius >= FourElements.W_WIDTH || boundingCircle.x - CircleEntity.radius <= 0) {
@@ -107,6 +114,7 @@ public class Element extends CircleEntity {
 
         velocity.x = 0;
         velocity.y = 0;
+        moving = false;
 
         bounces = 0;
         internalScore = 1;

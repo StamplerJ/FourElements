@@ -24,7 +24,7 @@ public class Assets {
         files = new HashMap<String, AssetFile>();
 
         //TextureAtlases
-        files.put("backgroundTextureAtlas", new AssetFile("sprites/background.atlas",   TextureAtlas.class));
+        files.put("backgroundTextureAtlas", new AssetFile("sprites/environment.atlas",   TextureAtlas.class));
         files.put("entitiesTextureAtlas",   new AssetFile("sprites/entities.atlas",     TextureAtlas.class));
         files.put("uiTextureAtlas",         new AssetFile("sprites/ui.atlas",           TextureAtlas.class));
 

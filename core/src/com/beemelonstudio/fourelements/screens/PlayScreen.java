@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.beemelonstudio.fourelements.FourElements;
@@ -46,6 +47,7 @@ public class PlayScreen extends GameScreen {
     public static List<Drop> drops;
 
     public static int score;
+    public float tempo;
 
     private Random random;
     private int[] dropData;
@@ -95,8 +97,10 @@ public class PlayScreen extends GameScreen {
         dropData = new int[3];
         difficulty = 1;
 
+        // TODO: Move this somewhere else
         game.preferences.putInteger("highscore", 0);
         score = 0;
+        tempo = 0f;
 
         // Create elements
         elements = new Element[4];
@@ -111,6 +115,15 @@ public class PlayScreen extends GameScreen {
     }
 
     public void update(){
+
+        // Adjust game speed according to score
+        if(score > tempo * 10){
+            tempo++;
+
+            for(Drop d : drops){
+                d.velocity.y += tempo;
+            }
+        }
 
         now = System.currentTimeMillis();
         if(now > calcSecond){
@@ -147,16 +160,26 @@ public class PlayScreen extends GameScreen {
 
         for(int diff = 0; diff < difficulty; diff++) {
 
+            // Get random type
             EntityTypes type = EntityTypes.class.getEnumConstants()[random.nextInt(4)];
 
             // x coordinates random line between 1 and 4
             // y coordinates is the top quarter of the screen
-            dropData[0] = random.nextInt(4)+1;
+            dropData[0] = random.nextInt(6)+1;
             dropData[1] = FourElements.W_HEIGHT + CircleEntity.radius;
 
-            drops.add(
-                    new Drop(dropData[0], dropData[1], type)
-            );
+            Drop drop = new Drop(dropData[0], dropData[1], type, tempo);
+
+            for(Drop d : drops){
+
+                if(Intersector.overlaps(drop.boundingCircle, d.boundingCircle)){
+                    drop.boundingCircle.y += CircleEntity.radius * 4;
+                    drop.velocity.y = d.velocity.y;
+                    break;
+                }
+            }
+
+            drops.add(drop);
 
         }
     }
@@ -239,8 +262,9 @@ public class PlayScreen extends GameScreen {
 
                 for(int i = 0; i < elements.length; i++){
                     if(Intersector.overlaps(elements[i].boundingCircle, new Circle(coordinates.x, coordinates.y, 1))){
-                        currentElement = elements[i];
-                        return true;
+                        if(!elements[i].moving)
+                            currentElement = elements[i];
+                            return true;
                     }
                 }
                 currentElement = null;
@@ -261,13 +285,13 @@ public class PlayScreen extends GameScreen {
             @Override
             public boolean fling(float velocityX, float velocityY, int button) {
 
-                Vector3 vel = new Vector3(velocityX, velocityY, 0);
-                camera.unproject(vel);
-
                 if (currentElement != null) {
 
-                    currentElement.velocity.x = vel.x; //Math.min(vel.x, currentElement.maxVelocity); // velocityX;
-                    currentElement.velocity.y = vel.y; //Math.min(vel.y, currentElement.maxVelocity); //-velocityY;
+                    float angle = -(float) Math.atan2(velocityY, velocityX);
+                    float velX = MathUtils.cos(angle) * currentElement.speed;
+                    float velY = MathUtils.sin(angle) * currentElement.speed;
+
+                    currentElement.velocity = new Vector2(velX, velY);
                 }
 
                 return false;

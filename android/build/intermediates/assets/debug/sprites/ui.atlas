@@ -6,7 +6,7 @@ filter: Nearest,Nearest
 repeat: none
 bubble
   rotate: false
-  xy: 724, 38
+  xy: 790, 38
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -16,5 +16,12 @@ healthbar
   xy: 2, 2
   size: 720, 100
   orig: 720, 100
+  offset: 0, 0
+  index: -1
+pause_icon
+  rotate: false
+  xy: 724, 30
+  size: 64, 72
+  orig: 64, 72
   offset: 0, 0
   index: -1

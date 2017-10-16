@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.beemelonstudio.fourelements.screens.GameScreen;
 import com.beemelonstudio.fourelements.screens.MenuScreen;
+import com.beemelonstudio.fourelements.screens.PlayScreen;
 import com.beemelonstudio.fourelements.utils.Assets;
 
 import java.util.Stack;
@@ -69,8 +70,8 @@ public class FourElements extends Game {
 		Gdx.input.setCatchMenuKey(false);
 
 		screens = new Stack<GameScreen>();
-		screens.push(new MenuScreen(this));
-		//screens.push(new PlayScreen(this));
+		//screens.push(new MenuScreen(this));
+		screens.push(new PlayScreen(this));
 
 		setScreen(screens.peek());
 	}

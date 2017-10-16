@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.Align;
 import com.beemelonstudio.fourelements.FourElements;
 
 /**
- * Created by root on 30.08.17.
+ * Created by Stampler on 30.08.17.
  */
 
 public class GameOverScreen extends GameScreen{

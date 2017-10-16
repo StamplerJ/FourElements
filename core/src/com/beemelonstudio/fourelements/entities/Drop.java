@@ -15,9 +15,9 @@ import com.beemelonstudio.fourelements.utils.Assets;
 
 public class Drop extends CircleEntity {
 
-    public Drop(int line, int y, EntityTypes type) {
+    public Drop(int line, int y, EntityTypes type, float tempo) {
 
-        int x = line * FourElements.W_WIDTH / 5;
+        int x = line * FourElements.W_WIDTH / 7;
         CircleEntity.radius = 24;
 
         boundingCircle = new Circle(x, y, CircleEntity.radius);
@@ -25,7 +25,7 @@ public class Drop extends CircleEntity {
 
         this.type = type;
 
-        velocity.y = 24 + (int) ( PlayScreen.score * 0.6f );
+        velocity.y = 24 + tempo;
         delete = false;
 
         textureAtlas = (TextureAtlas) Assets.get("entitiesTextureAtlas");
@@ -69,7 +69,7 @@ public class Drop extends CircleEntity {
 
         if(Intersector.overlaps(boundingCircle, PlayScreen.city.boundingBox)) {
             delete = true;
-            PlayScreen.city.health -= 10;
+            //PlayScreen.city.health -= 10;
         }
     }
 }

@@ -1,0 +1,54 @@
+
+environment.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+left_cloud
+  rotate: false
+  xy: 2, 1077
+  size: 1871, 807
+  orig: 1871, 807
+  offset: 0, 0
+  index: -1
+priest
+  rotate: false
+  xy: 1875, 1800
+  size: 90, 84
+  orig: 90, 84
+  offset: 0, 0
+  index: -1
+right_cloud
+  rotate: false
+  xy: 2, 446
+  size: 1458, 629
+  orig: 1458, 629
+  offset: 0, 0
+  index: -1
+trees_back
+  rotate: false
+  xy: 2, 2
+  size: 810, 195
+  orig: 810, 195
+  offset: 0, 0
+  index: -1
+trees_side
+  rotate: false
+  xy: 2, 199
+  size: 1400, 245
+  orig: 1400, 245
+  offset: 0, 0
+  index: -1
+
+environment2.png
+size: 1024,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sky
+  rotate: false
+  xy: 2, 2
+  size: 720, 1280
+  orig: 720, 1280
+  offset: 0, 0
+  index: -1

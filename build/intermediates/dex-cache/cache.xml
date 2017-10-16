@@ -5,8 +5,8 @@
         jar="/home/jann/Android/projects/libGDX/Projects/BeeMelon Studio/FourElements/core/build/libs/core-1.0.jar"
         jumboMode="false"
         revision="26.0.1"
-        sha1="96b74231ec8359d74a6767e42502eb94a3e59a64">
-        <dex dex="/home/jann/Android/projects/libGDX/Projects/BeeMelon Studio/FourElements/android/build/intermediates/pre-dexed/release/core-1.0_979901e121be8d8dd2714367286692fe1f7b756a.jar" />
+        sha1="37774ec744528e70a2c981dba936364e954f9ccf">
+        <dex dex="/home/jann/Android/projects/libGDX/Projects/BeeMelon Studio/FourElements/android/build/intermediates/pre-dexed/debug/core-1.0_979901e121be8d8dd2714367286692fe1f7b756a.jar" />
     </item>
 
 </items>
