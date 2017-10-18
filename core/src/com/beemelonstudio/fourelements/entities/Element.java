@@ -34,7 +34,7 @@ public class Element extends CircleEntity {
         backupCircle = new Circle(boundingCircle);
 
         velocity = new Vector2(0, 0);
-        speed = 640;
+        speed = 880;
         moving = false;
         bounces = 0;
 

@@ -194,6 +194,8 @@ public class PlayScreen extends GameScreen {
 
         if(running) {
 
+
+
             // Update world
             update();
 
@@ -256,19 +258,22 @@ public class PlayScreen extends GameScreen {
             @Override
             public boolean touchDown(float x, float y, int pointer, int button) {
 
-                coordinates.x = x;
-                coordinates.y = y;
-                camera.unproject(coordinates);
+                if(running) {
 
-                for(int i = 0; i < elements.length; i++){
-                    if(Intersector.overlaps(elements[i].boundingCircle, new Circle(coordinates.x, coordinates.y, 1))){
-                        if(!elements[i].moving)
-                            currentElement = elements[i];
+                    coordinates.x = x;
+                    coordinates.y = y;
+                    camera.unproject(coordinates);
+
+                    for (int i = 0; i < elements.length; i++) {
+                        if (Intersector.overlaps(elements[i].boundingCircle, new Circle(coordinates.x, coordinates.y, 1))) {
+                            if (!elements[i].moving)
+                                currentElement = elements[i];
                             return true;
+                        }
                     }
-                }
-                currentElement = null;
+                    currentElement = null;
 
+                }
                 return false;
             }
 
@@ -285,13 +290,16 @@ public class PlayScreen extends GameScreen {
             @Override
             public boolean fling(float velocityX, float velocityY, int button) {
 
-                if (currentElement != null) {
+                if(running) {
 
-                    float angle = -(float) Math.atan2(velocityY, velocityX);
-                    float velX = MathUtils.cos(angle) * currentElement.speed;
-                    float velY = MathUtils.sin(angle) * currentElement.speed;
+                    if (currentElement != null) {
 
-                    currentElement.velocity = new Vector2(velX, velY);
+                        float angle = -(float) Math.atan2(velocityY, velocityX);
+                        float velX = MathUtils.cos(angle) * currentElement.speed;
+                        float velY = MathUtils.sin(angle) * currentElement.speed;
+
+                        currentElement.velocity = new Vector2(velX, velY);
+                    }
                 }
 
                 return false;
